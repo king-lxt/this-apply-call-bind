@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>this=5</title>
+	</head>
+
+	<body>
+		<p style="background-color: #fff;"><b>this 永远指向最后调用它的那个对象</b></p>
+		<p>这是一个比较 坑</p>
+		<script type="text/javascript">
+			var name = "windowsName";
+			var a = {
+				name: null,
+				fn: function() {
+					console.log(this.name); // windowsName
+				}
+			}
+
+			var f = a.fn;
+			f();
+			//因为最后调用函数f是window对象下面的一个函数，this ==> window,
+		</script>
+	</body>
+
+</html>
